@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+   <style>
+    td>img{
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+}
+   </style>
+</head>
+<body>
+    <h1 class="display-5 my-5 text-center">Compare Colleges</h1>
+    <div class="container">
+        <div class="col-md-9 mx-auto">
+            <table class="table">
+                <tr class="bg-light">
+                    <th>Select Colleges</th>
+                    <th width="300px">
+                        <select class="form-control"id="select1" onchange="item1(this.value)">
+                            <option value="0">--Select Anyone--</option>
+                        </select>
+                    </th>
+                    <th width="300px">
+                        <select class="form-control"id="select2" onchange="item2(this.value)">
+                            <option value="0">--Select Anyone--</option>
+                        </select>
+                    </th>
+                </th>
+                </tr>
+                <tr>
+                    <th>College Image</th>
+                <td>
+                    <img src="images/noimage.png" id="img1" alt="">
+                </td>
+                <td>
+                    <img src="images/noimage.png" id="img2" alt="">
+                </td>
+                <!---->
+                <tr>
+                    <th> College Name</th>
+                    <td id="name1">N/A</td>
+                    <td id="name2">N/A</td>
+                </tr>
+                <tr>
+                    <th>About</th>
+                    <td id="ab1">N/A</td>
+                    <td id="ab2">N/A</td>
+                </tr>
+                <tr>
+                    <th>Rating</th>
+                    <td id="ra1">N/A</td>
+                    <td id="ra2">N/A</td>
+                </tr>
+                <tr>
+                    <th>Placement</th>
+                    <td id="pla1">N/A</td>
+                    <td id="pla2">N/A</td>
+                </tr>
+                <tr>
+                    <th>Courses Offered</th>
+                    <td id="co1">N/A</td>
+                    <td id="co2">N/A</td>
+                </tr>
+                <tr>
+                    <th>Exam Accepted</th>
+                    <td id="exam1">N/A</td>
+                    <td id="exam2">N/A</td>
+                </tr>
+                
+                </tr>
+            </table>            
+        </div>
+    </div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+<script src="js/data.js"></script>
+<script>
+    
+    for(var i= 1 ; i< product.length;i++){
+        document.getElementById("select1").innerHTML +=`
+        <option value="${i}">${product[i].name}</option>
+        `;
+        document.getElementById("select2").innerHTML +=`
+        <option value="${i}">${product[i].name}</option>
+        `;
+    }
+    function item1(a) {
+        var select2 = document.getElementById("select2").value;
+        if(a != select2){
+            document.getElementById("img1").src = product[a].image
+            document.getElementById("name1").innerHTML = product[a].name
+            document.getElementById("ab1").innerHTML = product[a].about
+            document.getElementById("ra1").innerHTML = product[a].rating
+            document.getElementById("pla1").innerHTML = product[a].placements
+            document.getElementById("co1").innerHTML = product[a].courses
+            document.getElementById("exam1").innerHTML = product[a].exam
+        }
+        else{
+            document.getElementById("select1").selectedIndex = 0;
+            document.getElementById("img1").src = product[0].image
+            document.getElementById("name1").innerHTML = ""
+            document.getElementById("ab1").innerHTML = ""
+            document.getElementById("ra1").innerHTML = ""
+            document.getElementById("pla1").innerHTML = ""
+            document.getElementById("co1").innerHTML = ""
+            document.getElementById("exam1").innerHTML = ""
+        }
+      
+    }
+    function item2(a) {
+        var select1 = document.getElementById("select1").value;
+        if(a != select1){
+            document.getElementById("img2").src = product[a].image
+            document.getElementById("name2").innerHTML = product[a].name
+            document.getElementById("ab2").innerHTML = product[a].about
+            document.getElementById("ra2").innerHTML = product[a].rating
+            document.getElementById("pla2").innerHTML = product[a].placements
+            document.getElementById("co2").innerHTML = product[a].courses
+            document.getElementById("exam2").innerHTML = product[a].exam
+           
+        }
+        else{
+            document.getElementById("select2").selectedIndex = 0;
+            document.getElementById("img2").src = product[0].image
+            document.getElementById("name2").innerHTML = ""
+            document.getElementById("ab2").innerHTML = ""
+            document.getElementById("ra2").innerHTML = ""
+            document.getElementById("pla2").innerHTML = ""
+            document.getElementById("co2").innerHTML = ""
+            document.getElementById("exam2").innerHTML = ""
+            
+        }
+       
+    }
+</script>
